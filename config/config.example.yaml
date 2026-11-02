@@ -1,0 +1,66 @@
+# Copy to config/config.yaml (git-ignored) and fill in.
+# scripts/render_prompts.py replaces every {{KEY}} in prompts/*.md with these values.
+# Setup guide: docs/02-setup-guide.md
+
+# ── You ────────────────────────────────────────────────────────────────
+OWNER_NAME: "Alex Example"
+OWNER_WORK_EMAIL: "alex@company.example"
+TIMEZONE: "Europe/Berlin"
+OUTPUT_LANGUAGE: "English"          # language for every post the tasks write
+WORK_HOURS_START: "08"
+WORK_HOURS_END: "19"
+
+# One paragraph of context: your role and main projects. The tasks use it to judge relevance.
+ROLE_CONTEXT: >
+  Alex works on the growth team. Main project: a paid-social funnel
+  (ads → landing pages → CRM → messaging follow-up), plus offline print campaigns.
+
+# ── Slack ──────────────────────────────────────────────────────────────
+SLACK_INBOX_CHANNEL_ID: "C0XXXXXXXXX"   # your private capture channel, e.g. #alex-inbox
+SLACK_OWNER_USER_ID: "U0XXXXXXXXX"
+# People whose DMs are always scanned (name + how to find the DM)
+PRIORITY_PEOPLE: >
+  Jamie Lead (DM via slack_search_users "Jamie Lead"), Sam Ops (DM D0XXXXXXXXX)
+# Channels to scan only when you are clearly addressed
+TEAM_CHANNELS: "#growth-updates C0XXXXXXXXX"
+# Channels to ignore completely (bot feeds etc.)
+IGNORE_CHANNELS: "#funnel-bot-feed C0XXXXXXXXX"
+
+# ── Notion ─────────────────────────────────────────────────────────────
+NOTION_ACTION_ITEMS_DS: "collection://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+NOTION_ACTION_ITEMS_URL: "https://www.notion.so/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+NOTION_KNOWLEDGE_DS: "collection://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Projects: name | routing keywords | Notion page ID of the project page (optional)
+# The names must match the select options in both databases exactly.
+PROJECTS: |
+  - "Funnel" — funnel, landing page, form, CRM handover, budget, scaling, tracking, UTM | page 0000000000000000000000000000000a
+  - "Creatives" — angle, creative, ad copy, hook, A/B test, agency briefing, headline | page 0000000000000000000000000000000b
+  - "Messaging Journey" — WhatsApp, follow-up, voice memo, reactivation, chatbot | page 0000000000000000000000000000000c
+  - "Print" — print, newspaper, flyer, circulation | page 0000000000000000000000000000000d
+  - "Analytics & Reporting" — dashboard, sheet, KPI, conversion, report, numbers | page 0000000000000000000000000000000e
+FALLBACK_PROJECT_TASKS: "Personal goals"
+FALLBACK_PROJECT_KNOWLEDGE: "General"
+ARCHIVED_PROJECTS: "Archive"        # never assign new items here
+
+# ── Calendars ──────────────────────────────────────────────────────────
+MAIN_CALENDAR: "Google Calendar primary (you@gmail.com)"      # the single source of truth
+WORK_CALENDAR: "Outlook / Microsoft 365 (alex@company.example)" # read-only + blocker mirrors
+# Google colorIds: 5 banana, 8 graphite, 9 blueberry, 2 sage, 11 tomato …
+COLOR_ACCEPTED: "5"
+COLOR_UNANSWERED: "8"
+COLOR_WORK_BLOCKER: "9"
+COLOR_PRIVATE_BLOCKER: "2"
+PRIVATE_KEYWORDS: "gym, sport, doctor, private, apartment, family, partner"
+
+# ── Mail & meetings ────────────────────────────────────────────────────
+WORK_MAIL: "Outlook (Microsoft 365), read-only"
+PRIVATE_MAIL: "Gmail"
+MEETING_NOTES: "Granola"
+# Senders that must never be treated as noise (e.g. your agency)
+IMPORTANT_EXTERNAL_SENDERS: "anyone not @company.example writing about ads, campaigns, creatives, reporting or budget"
+
+# ── Morning brief / weekly review KPIs (optional) ──────────────────────
+KPI_SOURCE: "Google Sheet 'Growth Cockpit' (ID xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx), tab 'Weekly' — read KPIs by row label, read-only"
+KPI_TARGETS: "Cost per qualified lead < 150 · Lead→qualified ≥ 45 %"
+LEAD_FEED: "Slack channel C0XXXXXXXXX: one bot post per new lead"   # or "none"
